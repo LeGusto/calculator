@@ -108,3 +108,14 @@ button:hover {
 .playing {
     transform: scale(0.9);
 }
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+footer {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: flex-end;
+}
