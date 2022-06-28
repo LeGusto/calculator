@@ -9,6 +9,8 @@ let dotted = false;
 let last_num = "";
 let last_op = "";
 let cur_num = "";
+let ops = ['/', '*', '+', '-'];
+
 
 clear.addEventListener('click', () => {
     clear.classList.add('playing');
@@ -20,7 +22,6 @@ dotted = false});
 function evaluate()
 {
     let text = top_op.textContent.split(" ");
-    let ops = ['/', '*', '+', '-'];
 
     if (ops.includes(text[text.length-1])) {text.splice(text.length-1,2)};
     last_num = num_display.textContent;
@@ -58,6 +59,9 @@ function evaluate()
             }
         }
     }
+
+    if (text[0] > 562949953421311) {text[0] = Infinity};
+
     top_op.textContent = parseFloat(text[0]);
     num_display.textContent = parseFloat(text[0]);
     if (num_display.textContent.includes('.')) {dotted = true};
@@ -114,10 +118,25 @@ function clicked(button) {
         evaluate();
     }
     else if (button.classList.contains('undo')) {
-        num_display.textContent = last_num;
-        top_op.textContent = last_op;
-        dotted = false;
-        prev_o = false;
+
+        if (top_op.textContent.length === 0) {return;}
+
+        if (top_op.textContent.length > 1 && top_op.textContent.charAt(top_op.textContent.length-1) === '.') {dotted = false};
+
+
+        if (top_op.textContent.charAt(top_op.textContent.length-2) === " ")
+        {
+            top_op.textContent = top_op.textContent.substring(0, top_op.textContent.length-2)
+        }
+        else {
+            top_op.textContent = top_op.textContent.substring(0, top_op.textContent.length-1)
+        }
+
+        if (ops.includes(top_op.textContent.charAt(top_op.textContent.length-1))) {prev_o = true;}
+        else {
+            prev_o = false;
+        }
+
     }
 }
 
@@ -141,12 +160,7 @@ function key_control(e)
     let code = e.keyCode;
     let chosen = document.querySelector(`button[data-key="${code}"]`);
     if (chosen === null) {return};
-    if (!chosen.classList.contains('clear')) {clicked(chosen)}
-    else if (chosen.classList.contains('clear')) { top_op.textContent = "";
-    num_display.textContent = "";
-   prev_o = false;
-dotted = false;
-clear.classList.add('playing');}
+    if (!chosen.classList.contains('clear')) {clicked(chosen)};
 }
 
 window.addEventListener('keydown', key_control)
