@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="keeper">
+            <div class="header">Calculator</div>
+            <div class="container">
+                <div class="top">
+                    <div class="process t-b">11</div>
+                    <div class="current t-b">11</div>
+                </div>
+                <div class="buttons">
+                    <div class='top-b'>
+                        <button class="red clear" data-key="8">Clear</button>
+                        <button class="red undo">Undo</button>
+                    </div>
+                    <div class="row">
+                        <button class="number" data-key="97">1</button>
+                        <button class="number" data-key="98">2</button>
+                        <button class="number" data-key="99">3</button>
+                        <button class="operator" data-key="111">/</button>
+                    </div>
+                    <div class="row">
+                        <button class="number" data-key="100">4</button>
+                        <button class="number" data-key="101">5</button>
+                        <button class="number" data-key="102">6</button>
+                        <button class="operator" data-key="106">*</button>
+                    </div>
+                    <div class="row">
+                        <button class="number" data-key="103">7</button>
+                        <button class="number" data-key="104">8</button>
+                        <button class="number" data-key="105">9</button>
+                        <button class="operator" data-key="107">+</button>
+                    </div>
+                    <div class="row">
+                        <button class="decimal" data-key="110">.</button>
+                        <button style="display: none" class="decimal" data-key="190">.</button>
+                        <button class="number" data-key="96">0</button>
+                        <button class="result" data-key="187">=</button>
+                        <button style="display: none" class="result" data-key="13">=</button>
+                        <button class="operator" data-key="109">-</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
